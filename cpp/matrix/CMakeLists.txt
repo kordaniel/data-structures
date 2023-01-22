@@ -6,7 +6,7 @@ FATAL ERROR: In-source builds are not allowed.
 ")
 endif()
 
-#set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
 
 project(Matrixer)
 
@@ -25,13 +25,20 @@ endif()
 list(APPEND CXX_FLAGS_RELEASE "-Werror" "-flto") # -O3 -DNDEBUG is set by cmake
 #list(APPEND CXX_FLAGS_DEBUG "-fsanitize=undefined" "-fsanitize=address" "-O0") # -g is set by cmake
 
-set(sources
-  "${CMAKE_SOURCE_DIR}/src/Math.cpp"
-  "${CMAKE_SOURCE_DIR}/src/Main.cpp"
-  "${CMAKE_SOURCE_DIR}/src/Matrix.cpp"
-  "${CMAKE_SOURCE_DIR}/src/Io.cpp"
-)
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/6b74da4757a549563d7c37c8fae3e704662a043b.zip
+    )
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
+endif()
 
-add_executable(Matrixer "${sources}")
-target_include_directories(Matrixer PRIVATE "${CMAKE_SOURCE_DIR}/include")
+add_subdirectory("${PROJECT_SOURCE_DIR}/src")
 
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    enable_testing()
+    add_subdirectory("${PROJECT_SOURCE_DIR}/test")
+endif()
