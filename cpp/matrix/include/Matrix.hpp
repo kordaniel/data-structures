@@ -19,22 +19,38 @@ public:
         T& operator[](size_t c);
 
         Matrix<T>& _mat;
-        size_t _r;
+        const size_t _r;
     };
+
+    struct ConstReference
+    {
+        ConstReference(const Matrix<T>& mat, const size_t r);
+
+        const T& operator[](const size_t c) const;
+
+        const Matrix<T>& _mat;
+        const size_t _r;
+    };
+
+
+    static Matrix ID(size_t size);
+    static Matrix Random(size_t rows, size_t columns, T minInclusive, T maxInclusive);
 
     Matrix() = delete;
     //Matrix(Matrix& other) = delete; // copy ctor, uses std::move ?
     //Matrix(const Matrix& other) = delete;
-    Matrix& operator=(const Matrix& other) = delete;
 
     Matrix(size_t rows, size_t columns);
+    Matrix(size_t rows, size_t columns, const std::vector<T>&& data);
     Matrix(std::initializer_list<std::initializer_list<T>> twoDimList);
+    //Matrix& operator=(const Matrix& other) = delete;
 
     size_t GetWidth()  const;
     size_t GetHeight() const;
     Matrix::Reference operator[](size_t r);
+    Matrix::ConstReference operator[](size_t r) const;
 
-    Matrix operator*(Matrix<T>& rhs);
+    Matrix operator*(const Matrix<T>& rhs) const;
     bool operator==(const Matrix<T>& rhs) const;
 
     template<typename U>

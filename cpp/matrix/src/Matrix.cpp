@@ -8,6 +8,9 @@
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include <utility>
+#include <type_traits>
+#include <cassert>
 
 
 /****************************************
@@ -33,14 +36,79 @@ Matrix<T>::Reference::operator[](size_t c)
 
 
 /****************************************
+ * Matrix::ConstReference implemenentation
+ ****************************************/
+template<class T>
+Matrix<T>::ConstReference::ConstReference(const Matrix<T>& mat, const size_t r)
+    : _mat(mat)
+    , _r(r)
+{
+    //
+}
+
+template<class T> const T&
+Matrix<T>::ConstReference::operator[](const size_t c) const
+{
+    if (c >= _mat.GetWidth()) {
+        throw std::out_of_range("Column index: " + std::to_string(c) + " out of bounds.");
+    }
+
+    return _mat._data[_r * _mat.GetWidth() + c];
+}
+
+
+/****************************************
  * Matrix implemenetation
  ****************************************/
+
+template<class T> Matrix<T>
+Matrix<T>::ID(size_t size)
+{ // static function
+    std::vector<T> data(size * size);
+    for (size_t i = 0; i < size; ++i) {
+        data[i*size + i] = static_cast<T>(1);
+    }
+    return Matrix(size, size, std::move(data));
+}
+
+template<class T> Matrix<T>
+Matrix<T>::Random(size_t rows, size_t columns, T minInclusive, T maxInclusive)
+{ // static function
+    std::vector<T> data;
+    data.reserve(rows * columns);
+    for (size_t i = 0; i < rows*columns; ++i)
+    {
+        if constexpr (std::is_same<T, float>() || std::is_same<T, double>())
+        {
+            data.push_back(Random::Real(minInclusive, maxInclusive));
+        }
+        else if constexpr (std::is_same<T, int>())
+        {
+            data.push_back(Random::Integer(minInclusive, maxInclusive));
+        }
+        else
+        { // NOTE: If (only) the supported template types are defined at the last rows of this module, then
+          //       the compiler should never branch here, so this is just a sanity check.
+            static_assert(!sizeof(T*), "Matrix::Random called with unsupported template type");
+        }
+    }
+    return Matrix(rows, columns, std::move(data));
+}
 
 template<class T>
 Matrix<T>::Matrix(size_t rows, size_t columns)
     : _rows(rows)
     , _columns(columns)
     , _data(_rows * _columns)
+{
+    //
+}
+
+template<class T>
+Matrix<T>::Matrix(size_t rows, size_t columns, const std::vector<T>&& data)
+    : _rows(rows)
+    , _columns(columns)
+    , _data(data)
 {
     //
 }
@@ -84,8 +152,18 @@ Matrix<T>::operator[](size_t r)
     return Matrix::Reference(*this, r);
 }
 
+template<class T> typename Matrix<T>::ConstReference
+Matrix<T>::operator[](size_t r) const
+{
+    if (r >= GetHeight()) {
+        throw std::out_of_range("Row index: " + std::to_string(r) + " out of bounds.");
+    }
+
+    return Matrix::ConstReference(*this, r);
+}
+
 template<class T> Matrix<T>
-Matrix<T>::operator*(Matrix<T>& rhs)
+Matrix<T>::operator*(const Matrix<T>& rhs) const
 {
     if (this->GetWidth() != rhs.GetHeight()) {
         throw std::invalid_argument("Mismatching matrix dimensions for multiplication.");
@@ -171,7 +249,10 @@ std::ostream& operator<<(std::ostream& out, const Matrix<T>& mat)
     return out;
 }
 
+template class Matrix<int>;
 template class Matrix<float>;
 template class Matrix<double>;
+
+template typename std::ostream& operator<<(std::ostream& out, const Matrix<int>& mat);
 template typename std::ostream& operator<<(std::ostream& out, const Matrix<float>& mat);
 template typename std::ostream& operator<<(std::ostream& out, const Matrix<double>& mat);
