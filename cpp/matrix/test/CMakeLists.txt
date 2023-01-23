@@ -5,17 +5,20 @@ add_link_options("$<$<CONFIG:Debug>:${CXX_LDFLAGS_DEBUG}>")
 
 include_directories(
     PRIVATE "${CMAKE_SOURCE_DIR}/include"
-    PRIVATE "${CMAKE_SOURCE_DIR}/src"
 )
 
 link_libraries(gtest gmock gtest_main)
 
-set(MatrixTest "MatrixTest")
-set(MatrixTextSources
+set(TestMatrix "TestMatrix")
+set(TestMatrixSources
     "MatrixTest.cpp"
+    "TestHelpers.cpp"
+    "${CMAKE_SOURCE_DIR}/src/Io.cpp"
+    "${CMAKE_SOURCE_DIR}/src/Math.cpp"
+    "${CMAKE_SOURCE_DIR}/src/Matrix.cpp"
 )
-add_executable("${MatrixTest}" "${MatrixTextSources}")
+add_executable("${TestMatrix}" "${TestMatrixSources}")
 add_test(
-    NAME "${MatrixTest}"
-    COMMAND "${MatrixTest}"
+    NAME "${TestMatrix}"
+    COMMAND "${TestMatrix}"
 )

@@ -62,25 +62,25 @@ def generate_testcase_random(max_size = 100):
     np.savetxt(
         f'{fpath}-A',
         A,
-        header=f'{len1}x{len2} * {len2}x{len1} => {len1}x{len1}'
+        header=f'{len1}x{len2}'
     )
     np.savetxt(
         f'{fpath}-B',
         B,
-        header=f'{len1}x{len2} * {len2}x{len1} => {len1}x{len1}'
+        header=f'{len2}x{len1}'
     )
     np.savetxt(
         f'{fpath}-C',
         C,
-        header=f'{len1}x{len2} * {len2}x{len1} => {len1}x{len1}'
+        header=f'{len1}x{len1}'
     )
 
 
-MAX_SIZE = 100 # max length of matrix in one dimension
+MAX_SIZE = 50 # max length of matrix in one dimension
 
 print(f'Generating {2*MAX_SIZE} different test cases with a maximum size of {MAX_SIZE} in both dimensions')
 for size in range(1, MAX_SIZE+1):
-    if size % 20 == 0:
+    if size % 10 == 0:
         print(f'{2*size} test cases generated and saved in {DATAPATH}/')
 
     # Generate 2 square matrices of sizexsize and their product
