@@ -1,9 +1,14 @@
 cmake_minimum_required(VERSION 3.16)
+
 if("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-  message(FATAL_ERROR "
+    message(FATAL_ERROR "
 FATAL ERROR: In-source builds are not allowed.
              Specify a separate build dir with the -B flag for build files.
 ")
+endif()
+
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
 endif()
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin")
