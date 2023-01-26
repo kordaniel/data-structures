@@ -42,7 +42,7 @@ std::vector<T> SplitStrToTypeVals(const std::string& str, char delimiter)
 }
 
 
-class MatrixTest : public ::testing::Test
+class MatrixTestPreComputed : public ::testing::Test
 {
 protected:
 
@@ -197,13 +197,242 @@ protected:
 
 };
 
-
-TEST_F(MatrixTest, IDxSquareMatricesMultiplication)
+TEST(MatrixTest, RowMajorOrderSquare1x1Addition)
 {
-    EXPECT_TRUE(MatrixTest::SquareMatrices.size() > 0)
+    Matrix<float> A = { { 1.0f } };
+    Matrix<float> B = { { 1.0f } };
+    Matrix<float> EXPECTED = { { 2.0f } };
+    EXPECT_TRUE(A + B == EXPECTED);
+}
+
+TEST(MatrixTest, RowMajorOrderSquare2x2Addition)
+{
+    Matrix<float> A = { { 1.0f, 2.0f }, { 3.0f, 4.0f } };
+    Matrix<float> B = { { 5.0f, 6.0f }, { 7.0f, 8.0f } };
+    Matrix<float> EXPECTED = { { 6.0f, 8.0f }, { 10.0f, 12.0f } };
+    EXPECT_TRUE((A + B) == EXPECTED);
+}
+
+TEST(MatrixTest, RowMajorOrderSquare3x3Addition)
+{
+    Matrix<double> A = {
+        { 2.0,   3.0,  5.0 },
+        { 7.0,  11.0, 13.0 },
+        { 17.0, 19.0, 23.0 }
+    };
+    Matrix<double> B = {
+        { 29.0, 31.0, 37.0 },
+        { 41.0, 43.0, 47.0 },
+        { 53.0, 59.0, 61.0 }
+    };
+    Matrix<double> EXPECTED = {
+        { 31.0, 34.0, 42.0 },
+        { 48.0, 54.0, 60.0 },
+        { 70.0, 78.0, 84.0 }
+    };
+    EXPECT_TRUE(A + B == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare1x1Addition)
+{
+    Matrix<float> A({ { 1.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> B({ { 1.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> EXPECTED = { { 2.0f } };
+    EXPECT_TRUE(A + B == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare2x2Addition)
+{
+    Matrix<float> A({ { 1.0f, 2.0f }, { 3.0f, 4.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> B({ { 5.0f, 6.0f }, { 7.0f, 8.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> EXPECTED = { { 6.0f, 8.0f }, { 10.0f, 12.0f } };
+    EXPECT_TRUE((A + B) == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare3x3Addition)
+{
+    Matrix<double> A({
+        { 2.0,   3.0,  5.0 },
+        { 7.0,  11.0, 13.0 },
+        { 17.0, 19.0, 23.0 }
+    }, Matrix<double>::Ordering::ColumnMajor);
+    Matrix<double> B({
+        { 29.0, 31.0, 37.0 },
+        { 41.0, 43.0, 47.0 },
+        { 53.0, 59.0, 61.0 }
+    }, Matrix<double>::Ordering::ColumnMajor);
+    Matrix<double> EXPECTED = {
+        { 31.0, 34.0, 42.0 },
+        { 48.0, 54.0, 60.0 },
+        { 70.0, 78.0, 84.0 }
+    };
+    Matrix<double> RESULT = A + B;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<double>::Ordering::ColumnMajor);
+}
+
+TEST(MatrixTest, RowMajorPlusColumnMajorAddition)
+{
+    Matrix<int> ROW_MAJOR({
+        { 1, 3 },
+        { 5, 7 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> COL_MAJOR({
+        { 9,  11 },
+        { 13, 17 }
+    }, Matrix<int>::Ordering::ColumnMajor);
+    Matrix<int> EXPECTED({
+        { 10, 14 },
+        { 18, 24 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> RESULT = ROW_MAJOR + COL_MAJOR;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+}
+
+TEST(MatrixTest, ColumnMajorPlusRowMajorAddition)
+{
+    Matrix<int> ROW_MAJOR({
+        { 1, 3 },
+        { 5, 7 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> COL_MAJOR({
+        { 9,  11 },
+        { 13, 17 }
+    }, Matrix<int>::Ordering::ColumnMajor);
+    Matrix<int> EXPECTED({
+        { 10, 14 },
+        { 18, 24 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> RESULT = COL_MAJOR + ROW_MAJOR;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+}
+
+
+TEST(MatrixTest, RowMajorOrderSquare1x1Subtraction)
+{
+    Matrix<float> A = { {  1.0f } };
+    Matrix<float> B = { { -1.0f } };
+    Matrix<float> EXPECTED = { { 2.0f } };
+    EXPECT_TRUE(A - B == EXPECTED);
+}
+
+TEST(MatrixTest, RowMajorOrderSquare2x2Subtraction)
+{
+    Matrix<float> A = { { 1.0f, 2.0f }, { 3.0f, 4.0f } };
+    Matrix<float> B = { { 1.0f, 2.0f }, { 3.0f, 4.0f } };
+    Matrix<float> EXPECTED(2, 2);
+    EXPECT_TRUE(A - B == EXPECTED)
+        << "A:\n" << A
+        << "\nB:\n" << B
+        << "\nA-B:\n" << (A-B)
+        << "\nExpected:\n" << EXPECTED << std::endl;
+}
+
+TEST(MatrixTest, RowMajorOrderSquare3x3Subtraction)
+{
+    Matrix<double> A = {
+        { 29.0, 31.0, 37.0 },
+        { 41.0, 43.0, 47.0 },
+        { 53.0, 59.0, 61.0 }
+    };
+    Matrix<double> B = {
+        { 2.0,   3.0,  5.0 },
+        { 7.0,  11.0, 13.0 },
+        { 17.0, 19.0, 23.0 }
+    };
+    Matrix<double> EXPECTED = {
+        { 27.0, 28.0, 32.0 },
+        { 34.0, 32.0, 34.0 },
+        { 36.0, 40.0, 38.0 }
+    };
+    EXPECT_TRUE(A - B == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare1x1Subtraction)
+{
+    Matrix<float> A({ { 1.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> B({ { 1.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> EXPECTED = { { 0.0f } };
+    EXPECT_TRUE(A - B == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare2x2Subtraction)
+{
+    Matrix<float> A({ { 1.0f, 2.0f }, { 3.0f, 4.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> B({ { 5.0f, 6.0f }, { 7.0f, 8.0f } }, Matrix<float>::Ordering::ColumnMajor);
+    Matrix<float> EXPECTED = { { -4.0f, -4.0f }, { -4.0f, -4.0f } };
+    EXPECT_TRUE((A - B) == EXPECTED);
+}
+
+TEST(MatrixTest, ColumnMajorOrderSquare3x3Subtraction)
+{
+    Matrix<double> A({
+        { 29.0, 31.0, 37.0 },
+        { 41.0, 43.0, 47.0 },
+        { 53.0, 59.0, 61.0 }
+    }, Matrix<double>::Ordering::ColumnMajor);
+    Matrix<double> B({
+        { 2.0,   3.0,  5.0 },
+        { 7.0,  11.0, 13.0 },
+        { 17.0, 19.0, 23.0 }
+    }, Matrix<double>::Ordering::ColumnMajor);
+    Matrix<double> EXPECTED = {
+        { 27.0, 28.0, 32.0 },
+        { 34.0, 32.0, 34.0 },
+        { 36.0, 40.0, 38.0 }
+    };
+    Matrix<double> RESULT = A - B;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<double>::Ordering::ColumnMajor);
+}
+
+TEST(MatrixTest, RowMajorMinusColumnMajorSubtraction)
+{
+    Matrix<int> ROW_MAJOR({
+        { 1, 3 },
+        { 5, 7 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> COL_MAJOR({
+        { 9,  11 },
+        { 13, 17 }
+    }, Matrix<int>::Ordering::ColumnMajor);
+    Matrix<int> EXPECTED({
+        { -8,  -8 },
+        { -8, -10 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> RESULT = ROW_MAJOR - COL_MAJOR;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+}
+
+TEST(MatrixTest, ColumnMajorMinusRowMajorSubtraction)
+{
+    Matrix<int> ROW_MAJOR({
+        { 1, 3 },
+        { 5, 7 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> COL_MAJOR({
+        { 9,  11 },
+        { 13, 17 }
+    }, Matrix<int>::Ordering::ColumnMajor);
+    Matrix<int> EXPECTED({
+        { 8,  8 },
+        { 8, 10 }
+    }, Matrix<int>::Ordering::RowMajor);
+    Matrix<int> RESULT = COL_MAJOR - ROW_MAJOR;
+    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+}
+
+
+TEST_F(MatrixTestPreComputed, IDxSquareRowMajorMatricesMultiplication)
+{
+    EXPECT_TRUE(MatrixTestPreComputed::SquareMatrices.size() > 0)
         << "No test data for square matrices";
     size_t i = 0;
-    for (auto const& [diagonal, matrices] : MatrixTest::SquareMatrices)
+    for (auto const& [diagonal, matrices] : MatrixTestPreComputed::SquareMatrices)
     {
         auto matrix = matrices[i++];
         i %= matrices.size();
@@ -215,11 +444,11 @@ TEST_F(MatrixTest, IDxSquareMatricesMultiplication)
     }
 }
 
-TEST_F(MatrixTest, SquareMatricesMultiplication)
+TEST_F(MatrixTestPreComputed, SquareRowMajorMatricesMultiplication)
 {
-    EXPECT_TRUE(MatrixTest::SquareMatrices.size() > 0)
+    EXPECT_TRUE(MatrixTestPreComputed::SquareMatrices.size() > 0)
         << "No test data for square matrices";
-    for (auto const& [diagonal, matrices] : MatrixTest::SquareMatrices)
+    for (auto const& [diagonal, matrices] : MatrixTestPreComputed::SquareMatrices)
     {
         auto A = matrices[0];
         auto B = matrices[1];
@@ -228,31 +457,31 @@ TEST_F(MatrixTest, SquareMatricesMultiplication)
     }
 }
 
-TEST_F(MatrixTest, IDxRandomMatricesMultiplication)
+TEST_F(MatrixTestPreComputed, IDxRandomRowMajorMatricesMultiplication)
 {
-    EXPECT_TRUE(MatrixTest::RandomMatrices.size() > 0)
+    EXPECT_TRUE(MatrixTestPreComputed::RandomMatrices.size() > 0)
         << "No test data for matrices with random sizes";
     size_t i = 0;
-    for (const auto& matrices : MatrixTest::RandomMatrices)
+    for (const auto& matrices : MatrixTestPreComputed::RandomMatrices)
     {
         auto matrix = matrices[i++];
         i %= matrices.size();
 
         EXPECT_TRUE(Matrix<float>::ID(matrix.GetHeight()) * matrix == matrix);
-        //EXPECT_TRUE(matrix * Matrix<float>::ID(matrix.GetWidth()) == matrix);
+        EXPECT_TRUE(matrix * Matrix<float>::ID(matrix.GetWidth()) == matrix);
     }
 }
 
-TEST_F(MatrixTest, RandomMatricesMultiplication)
+TEST_F(MatrixTestPreComputed, RandomRowMajorMatricesMultiplication)
 {
-    EXPECT_TRUE(MatrixTest::RandomMatrices.size() > 0)
+    EXPECT_TRUE(MatrixTestPreComputed::RandomMatrices.size() > 0)
         << "No test data for matrices with random sizes";
-    for (const auto& matrices : MatrixTest::RandomMatrices)
+    for (const auto& matrices : MatrixTestPreComputed::RandomMatrices)
     {
         auto A = matrices[0];
         auto B = matrices[1];
         auto C = matrices[2];
 
-        EXPECT_TRUE(A*B == C) << A  << '\n' << B << '\n' << C << std::endl;;
+        EXPECT_TRUE(A*B == C);
     }
 }

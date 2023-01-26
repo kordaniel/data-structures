@@ -1,16 +1,25 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
-#include <vector>
-#include <iostream>
 #include <array>
+#include <functional>
+#include <iostream>
 #include <initializer_list>
+#include <vector>
 
 
 template<class T>
 class Matrix
 {
 public:
+
+    enum class Ordering {
+        // |1, 2, 3|
+        // |4, 5, 6|
+        // |7, 8, 9|
+        RowMajor,   // row * nCols + col - 3x3 => 1 2 3 4 5 6 7 8 9
+        ColumnMajor // row + col * nRows - 3x3 => 1 4 7 2 5 8 3 6 9
+    };
 
     struct Reference
     {
@@ -34,31 +43,62 @@ public:
 
 
     static Matrix ID(size_t size);
-    static Matrix Random(size_t rows, size_t columns, T minInclusive, T maxInclusive);
+
+    static Matrix Random(
+        size_t rows,
+        size_t columns,
+        std::function<T()> generatorFunc,
+        Matrix::Ordering ordering = Matrix::Ordering::RowMajor
+    );
 
     Matrix() = delete;
     //Matrix(Matrix& other) = delete; // copy ctor, uses std::move ?
     //Matrix(const Matrix& other) = delete;
 
-    Matrix(size_t rows, size_t columns);
-    Matrix(size_t rows, size_t columns, const std::vector<T>&& data);
-    Matrix(std::initializer_list<std::initializer_list<T>> twoDimList);
+    Matrix(
+        size_t rows,
+        size_t columns,
+        Matrix::Ordering ordering = Matrix::Ordering::RowMajor
+    );
+    Matrix(
+        size_t rows,
+        size_t columns,
+        const std::vector<T>&& data,
+        Matrix::Ordering ordering = Matrix::Ordering::RowMajor
+    );
+    Matrix(
+        const std::initializer_list<std::initializer_list<T>> twoDimList,
+        Matrix::Ordering ordering = Matrix::Ordering::RowMajor
+    );
     //Matrix& operator=(const Matrix& other) = delete;
 
     size_t GetWidth()  const;
     size_t GetHeight() const;
+    Matrix::Ordering GetOrdering() const;
     Matrix::Reference operator[](size_t r);
-    Matrix::ConstReference operator[](size_t r) const;
+    const Matrix::ConstReference operator[](size_t r) const;
 
     Matrix operator*(const Matrix<T>& rhs) const;
+    Matrix operator+(const Matrix<T>& rhs) const;
+    Matrix operator-(const Matrix<T>& rhs) const;
     bool operator==(const Matrix<T>& rhs) const;
 
     template<typename U>
     friend std::ostream& operator<<(std::ostream& out, const Matrix<U>& mat);
 
 private:
-  const size_t _rows;
-  const size_t _columns;
+    /// @brief Returns the index in the data array for the requested marix element.
+    ///        This index differs for matrices stored in column vs. row major order.
+    /// @param row The row of the requested element in the matrix.
+    /// @param col The column of the requested element in the matrix.
+    /// @return the computed index for the element.
+    size_t getDataIdx(size_t row, size_t col) const;
+
+
+private:
+  const size_t   _rows;
+  const size_t   _columns;
+  Ordering       _ordering;
   std::vector<T> _data;
 
 };
