@@ -1,11 +1,11 @@
 #include "Math.hpp"
 
-#include <random>
-#include <cmath>
 #include <algorithm>
-#include <type_traits> // is_same
 #include <cassert>
+#include <cmath>
 #include <limits>
+#include <random>
+#include <type_traits>
 
 
 template<typename T> bool
@@ -42,14 +42,14 @@ Random::UniformlyDistributed(T minInclusive, T maxInclusive)
 
     if constexpr (std::is_same<T, float>() || std::is_same<T, double>())
     {
-        static std::uniform_real_distribution<T> distribution(
+        std::uniform_real_distribution<T> distribution(
             minInclusive, std::nextafter(maxInclusive, std::numeric_limits<T>::max())
         );
         return distribution(generator);
     }
     else if constexpr (std::is_same<T, int>() || std::is_same<T, size_t>())
     {
-        static std::uniform_int_distribution<T> distribution(minInclusive, maxInclusive);
+        std::uniform_int_distribution<T> distribution(minInclusive, maxInclusive);
         return distribution(generator);
     }
     else
