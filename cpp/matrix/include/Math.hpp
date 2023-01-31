@@ -4,7 +4,6 @@
 
 namespace Math
 {
-
     /// @brief Compares two values of type T for equality.
     /// @tparam T must be one of float, double, int or size_t.
     /// @param val1 value to compare.
@@ -18,9 +17,15 @@ namespace Math
 
 namespace Random
 {
+    // Generates ~37 * 10^6 random floats / sec
+    //           ~21 * 10^6 random ints / sec
+    // ACTUALLY: ~1.2 * 10^8 random floats / sec
+    //           ~3.9 * 10^7 random ints / sec
     template<typename T> T
     UniformlyDistributed(T minInclusive = static_cast<T>(0), T maxInclusive = static_cast<T>(1));
 
+    // Generates ~47*10^6 random floats or ints / sec
+    // ACTUALLY: ~1.9 * 10^8 random floats or ints / sec
     /// Returns a random value from the inclusive range [minInclusive, maxInclusive].
     /// The returned values are not distributed in any particular way and the used
     /// pseudo-random generator is optimized for speed over randomness.

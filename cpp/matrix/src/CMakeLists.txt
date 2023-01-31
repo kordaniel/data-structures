@@ -6,6 +6,7 @@ set(sources
     "Math.cpp"
     "Matrix.cpp"
     "ThreadPool.cpp"
+    "Timer.cpp"
 )
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

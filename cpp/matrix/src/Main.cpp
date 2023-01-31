@@ -1,10 +1,21 @@
 #include "Matrix.hpp"
 #include "Io.hpp"
 #include "Math.hpp"
+#include "Timer.hpp"
 #include "ThreadPool.hpp"
 
 #include <functional>
 #include <iostream>
+#include <memory>
+
+#define DO_TESTS 1
+
+#ifdef DO_TESTS
+    #include <cstdlib>
+    #define TEST_DT double
+    // Specify the datatype to use in the tests
+    // from the set of: float, double and int.
+#endif
 
 
 int
@@ -12,8 +23,86 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 {
     static_assert(std::is_same<size_t, unsigned long>(), "size_t is not unsigned long");
 
-    ThreadPool threadPool(4, true); // Initialize and start threadpool, matrix class will use worker
-                                    // threads with large enough matrices to gain benefits from parallelism.
+    size_t numThreads = 4;
+
+#ifdef DO_TESTS
+    if (argc > 1) {
+        numThreads = strtoul(argv[1], nullptr, 10);
+    }
+#endif
+
+    ThreadPool threadPool(numThreads, true); // Initialize and start threadpool, matrix class will use worker
+                                             // threads with large enough matrices to gain benefits from parallelism.
+
+#ifdef DO_TESTS
+
+    int64_t elapsed;
+    int64_t total = 0;
+    Matrix<TEST_DT>* BCptr = nullptr;
+
+    std::cout << "Running timing tests for generation and multiplication of matrices.\n"
+              << "All printed times are real wall clock times of the different\n"
+              << "opearations and are reported in milliseconds. Do note that these\n"
+              << "times might differ from the times reported by different tools, since\n"
+              << "this is a multithreaded application.\n"
+              << "Using: " << threadPool.GetThreadsCount() << " worker threads.\n"
+              << "--------------------------------------------------------------------\n" << std::endl;
+
+    Timer tim;
+
+    {
+        tim.Reset();
+        Matrix<TEST_DT> B = Matrix<TEST_DT>::Random(
+            1000, 1'000'000,
+            std::bind<TEST_DT>(&Random::Fast<TEST_DT>, static_cast<TEST_DT>(0.0), static_cast<TEST_DT>(1.0))
+        );
+        elapsed = tim.Elapsed<std::chrono::milliseconds>();
+        total += elapsed;
+        std::cout << "Generated B in: " << elapsed << " ms." << std::endl;
+
+        tim.Reset();
+        Matrix<TEST_DT> C = Matrix<TEST_DT>::Random(
+            1'000'000, 1,
+            std::bind<TEST_DT>(&Random::Fast<TEST_DT>, static_cast<TEST_DT>(0.0), static_cast<TEST_DT>(1.0))
+        );
+        elapsed = tim.Elapsed<std::chrono::milliseconds>();
+        total += elapsed;
+        std::cout << "Generated C in: " << elapsed << " ms." << std::endl;
+
+        tim.Reset();
+        auto BC = B * C;
+        elapsed = tim.Elapsed<std::chrono::milliseconds>();
+        total += elapsed;
+        std::cout << "Computed BC in: " << elapsed << " ms." << std::endl;
+
+        BCptr = &BC;
+    }
+
+    if (BCptr == nullptr) {
+        std::cerr << "No ptr, lost matrix BC.." << std::endl;
+        return 1;
+    }
+
+    tim.Reset();
+    Matrix<TEST_DT> A = Matrix<TEST_DT>::Random(
+        1'000'000, 1000,
+        std::bind<TEST_DT>(&Random::Fast<TEST_DT>, static_cast<TEST_DT>(0.0), static_cast<TEST_DT>(1.0))
+    );
+    elapsed = tim.Elapsed<std::chrono::milliseconds>();
+    total += elapsed;
+    std::cout << "Generated A in: " << elapsed << " ms." << std::endl;
+
+    tim.Reset();
+    auto ABC = A * *BCptr;
+    elapsed = tim.Elapsed<std::chrono::milliseconds>();
+    total += elapsed;
+    std::cout << "Computed A*BC in: " << elapsed << " ms.\n"
+              << "---------------------------------------\n"
+              << "In total: " << total << " ms." << std::endl;
+
+    #undef TEST_DT
+
+#else
 
     std::cout << "Identity matrices with diagonal sizes in [1,3] and with types in [float,double,int]:" << std::endl;
     for (size_t i = 1; i < 4; ++i) {
@@ -62,6 +151,8 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     std::cout << "R2, double vals in [10.0, 10.5]:\n" << R2 << std::endl;
     std::cout << "R3, int vals in [0,1]:\n" << R3 << std::endl;
     std::cout << "R3_(5,2): " << R3[5][2] << std::endl;
+
+#endif
 
     return 0;
 }

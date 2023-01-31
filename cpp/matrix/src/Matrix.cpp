@@ -86,7 +86,6 @@ Matrix<T>::Random(
 
     if (ThreadPool::IsStarted())
     {
-        std::cout << "Using: "  << ThreadPool::GetThreadsCount() << "." << std::endl;
         size_t lengthSlice = length / ThreadPool::GetThreadsCount();
         if (lengthSlice < MIN_OPERATIONS_PER_THREAD) {
             lengthSlice = MIN_OPERATIONS_PER_THREAD;
