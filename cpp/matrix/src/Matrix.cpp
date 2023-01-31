@@ -1,5 +1,6 @@
 #include "Matrix.hpp"
 #include "Math.hpp"
+#include "ThreadPool.hpp"
 
 #include <algorithm>
 #include <cassert>
@@ -79,57 +80,51 @@ Matrix<T>::Random(
     std::function<T()> generatorFunc,
     Matrix::Ordering ordering)
 { // static function
-    std::unique_ptr<T[]> data = std::make_unique<T[]>(rows * columns);
-
-    for (size_t i = 0; i < rows*columns; ++i) {
-        data[i] = generatorFunc();
-    }
-    return Matrix(rows, columns, std::move(data), ordering);
-}
-
-template<class T> Matrix<T>
-Matrix<T>::Random(
-    size_t rows,
-    size_t columns,
-    std::function<T()> generatorFunc,
-    const ThreadPool& threadPool,
-    Matrix::Ordering ordering)
-{ // static function
-    constexpr size_t MIN_LOAD_PER_THREAD = 1'000'000;
-
     size_t length = rows*columns;
-    size_t lengthSlice = length / threadPool.GetThreadsCount();
-    if (lengthSlice < MIN_LOAD_PER_THREAD) {
-        lengthSlice = MIN_LOAD_PER_THREAD;
-    }
-    size_t i = 0;
 
-    std::vector<std::future<bool>> threadResults;
     std::unique_ptr<T[]> data = std::make_unique<T[]>(length);
 
-    // Function for the worker threads to run.
-    const auto fillArr = [&data, &generatorFunc](size_t start, size_t end)
+    if (ThreadPool::IsStarted())
     {
-        while (start < end) {
-            data[start++] = generatorFunc();
+        std::cout << "Using: "  << ThreadPool::GetThreadsCount() << "." << std::endl;
+        size_t lengthSlice = length / ThreadPool::GetThreadsCount();
+        if (lengthSlice < MIN_OPERATIONS_PER_THREAD) {
+            lengthSlice = MIN_OPERATIONS_PER_THREAD;
+        }
+        size_t i = 0;
+
+        std::vector<std::future<bool>> threadResults;
+
+        // Function for the worker threads to run.
+        const auto fillArrSegment = [&data, &generatorFunc](size_t start, size_t end)
+        {
+            while (start < end) {
+                data[start++] = generatorFunc();
+            }
+
+            return true;
+        };
+
+        for (; lengthSlice > 0 && (i+lengthSlice) <= length; i += lengthSlice) {
+            // Start threads, each thread fills a disjoint range of the data array.
+            threadResults.push_back(ThreadPool::QueueTask(std::bind(fillArrSegment, i, i+lengthSlice)));
         }
 
-        return true;
-    };
+        while (i < length) {
+            // Main thread fills the remainder range, with length < worker threads range.
+            data[i++] = generatorFunc();
+        }
 
-    for (; lengthSlice > 0 && (i+lengthSlice) <= length; i += lengthSlice) {
-        // Start threads, each thread fills a disjoint range of the data array.
-        threadResults.push_back(threadPool.QueueTask(std::bind(fillArr, i, i+lengthSlice)));
+        for (auto& r : threadResults) {
+            // Wait for all threads to complete before continuing.
+            r.get();
+        }
     }
-
-    while (i < length) {
-        // Main thread fills the remainder range, with length < worker threads range.
-        data[i++] = generatorFunc();
-    }
-
-    for (auto& r : threadResults) {
-        // Wait for all threads to complete before continuing.
-        r.get();
+    else
+    {
+        for (size_t i = 0; i < rows*columns; ++i) {
+            data[i] = generatorFunc();
+        }
     }
 
     return Matrix(rows, columns, std::move(data), ordering);
@@ -241,24 +236,69 @@ Matrix<T>::operator[](size_t row) const {
 template<class T> Matrix<T>
 Matrix<T>::operator*(const Matrix<T>& rhs) const
 {
+
     if (this->GetWidth() != rhs.GetHeight()) {
         throw std::invalid_argument("Mismatching matrix dimensions for multiplication.");
     }
+
     const size_t height = this->GetHeight();
     const size_t width  = rhs.GetWidth();
 
     std::unique_ptr<T[]> data = std::make_unique<T[]>(height * width);
 
-    for (size_t r = 0; r < height; ++r)
+    if (ThreadPool::IsStarted())
     {
-        for (size_t c = 0; c < width; ++c)
+        size_t rowSlice = height / ThreadPool::GetThreadsCount();
+        if ((rowSlice * this->GetWidth()) < MIN_OPERATIONS_PER_THREAD) {
+            rowSlice = MIN_OPERATIONS_PER_THREAD / this->GetWidth();
+        }
+
+        size_t r = 0;
+
+        std::vector<std::future<bool>> threadResults;
+
+        const auto computeRows = [this, &data, &width, &height, &rhs](size_t row, size_t endRow)
         {
-            T sum = static_cast<T>(0);
-            for (size_t i = 0; i < this->GetWidth(); ++i)
+            while (row < endRow)
             {
-                sum += this->_data[getDataIdx(r, i)] * rhs._data[rhs.getDataIdx(i, c)];
+                for (size_t c = 0; c < width; ++c)
+                {
+                    T sum = static_cast<T>(0);
+                    for (size_t i = 0; i < this->GetWidth(); ++i)
+                    {
+                        sum += this->_data[this->getDataIdx(row, i)] * rhs._data[rhs.getDataIdx(i, c)];
+                    }
+                    data[row * width + c] = sum;
+                }
+                ++row;
             }
-            data[r * width + c] = sum;
+
+            return true;
+        };
+
+        for (; rowSlice > 0 && (r+rowSlice) <= height; r += rowSlice) {
+            threadResults.push_back(ThreadPool::QueueTask(std::bind(computeRows, r, r+rowSlice)));
+        }
+
+        computeRows(r, height); // Compute possible remaining rows.
+
+        for (auto& res : threadResults) {
+            res.get();
+        }
+    }
+    else
+    {
+        for (size_t r = 0; r < height; ++r)
+        {
+            for (size_t c = 0; c < width; ++c)
+            {
+                T sum = static_cast<T>(0);
+                for (size_t i = 0; i < this->GetWidth(); ++i)
+                {
+                    sum += this->_data[this->getDataIdx(r, i)] * rhs._data[rhs.getDataIdx(i, c)];
+                }
+                data[r * width + c] = sum;
+            }
         }
     }
 

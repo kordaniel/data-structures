@@ -2,86 +2,97 @@
 
 
 ThreadPool::ThreadPool(size_t numThreads, bool startThreads)
-    : _terminate(true)
-    , _threadsCount(numThreads <= std::thread::hardware_concurrency()
-        ? numThreads
-        : std::thread::hardware_concurrency())
-    , _threadsWaitingCount(0)
-    , _threads()
-    , _queueMutex()
-    , _queueMutexCondition()
-    , _jobs()
 {
-    if (startThreads) {
-        Start();
+    if (s_objectInstantiated) {
+        throw std::runtime_error("Attempted to instantiate a second ThreadPool object");
+    }
+    s_objectInstantiated = true;
+
+    if (startThreads && !ThreadPool::IsStarted()) {
+        ThreadPool::Start(numThreads);
     }
 }
 
 ThreadPool::~ThreadPool()
 {
-    Stop();
+    ThreadPool::Stop();
+    s_objectInstantiated = false;
 }
 
 void
-ThreadPool::Start()
-{
+ThreadPool::Start(size_t numThreads)
+{ // static function
     {
-        std::unique_lock<std::mutex> lock(_queueMutex);
-        if (!_terminate) {
+        std::unique_lock<std::mutex> lock(s_queueMutex);
+        if (!s_terminate) {
             throw std::runtime_error("Attempted to start an already started ThreadPool");
         }
+        s_terminate = false;
+        s_threadsCount = numThreads <= std::thread::hardware_concurrency()
+                       ? numThreads
+                       : std::thread::hardware_concurrency();
     }
 
-    _terminate = false;
-    _threads.resize(_threadsCount);
-    _threadsWaitingCount = 0;
+    s_threads.reserve(s_threadsCount);
+    s_threadsWaitingCount = 0;
 
-    for (size_t i = 0; i < _threadsCount; ++i) {
-        _threads.at(i) = std::thread(&ThreadPool::threadLoop, this);
+    for (size_t i = 0; i < s_threadsCount; ++i) {
+        s_threads.emplace_back(&ThreadPool::threadLoop);
     }
 }
 
 void
 ThreadPool::Stop()
-{
+{ // static function
     {
-        std::unique_lock<std::mutex> lock(_queueMutex);
-        _terminate = true;
+        std::unique_lock<std::mutex> lock(s_queueMutex);
+        s_terminate = true;
+        s_threadsCount = 0;
     }
-    _queueMutexCondition.notify_all();
+    s_queueMutexCondition.notify_all();
 
-    for (auto& t : _threads) {
+    for (auto& t : s_threads) {
         t.join();
     }
 
-    _threads.clear();
+    s_threads.clear();
 }
 
 bool
-ThreadPool::HasTasksQueued() const
-{
+ThreadPool::HasTasksQueued()
+{ // static function
     bool jobsWaiting;
     {
-        std::unique_lock<std::mutex> lock(_queueMutex);
-        jobsWaiting = !_jobs.empty();
+        std::unique_lock<std::mutex> lock(s_queueMutex);
+        jobsWaiting = !s_jobs.empty();
     }
     return jobsWaiting;
 }
 
 bool
-ThreadPool::IsIdle() const
-{
+ThreadPool::IsIdle()
+{ // static function
     bool done;
     {
-        std::unique_lock<std::mutex> lock(_queueMutex);
-        done = _threadsWaitingCount == _threadsCount && _jobs.empty();
+        std::unique_lock<std::mutex> lock(s_queueMutex);
+        done = s_threadsWaitingCount == s_threadsCount && s_jobs.empty();
     }
     return done;
 }
 
+bool
+ThreadPool::IsStarted()
+{ // static function
+    std::unique_lock<std::mutex> lock(s_queueMutex);
+    return !s_terminate;
+}
+
 size_t
-ThreadPool::GetThreadsCount() const
-{ return _threadsCount; }
+ThreadPool::GetThreadsCount()
+{ // static function
+    std::unique_lock<std::mutex> lock(s_queueMutex);
+    return s_threadsCount;
+}
 
 
 /****************************************
@@ -89,28 +100,28 @@ ThreadPool::GetThreadsCount() const
  ****************************************/
 void
 ThreadPool::threadLoop()
-{
+{ // static function
     while (true)
     {
         std::function<void()> task;
         {
-            std::unique_lock<std::mutex> lock(_queueMutex);
+            std::unique_lock<std::mutex> lock(s_queueMutex);
 
-            _threadsWaitingCount++;
+            s_threadsWaitingCount++;
 
-            _queueMutexCondition.wait(lock, [this]() {
+            s_queueMutexCondition.wait(lock, []() {
                 // lock is released while waiting, automatically reaquired when returning from here
-                return !_jobs.empty() || _terminate;
+                return !s_jobs.empty() || s_terminate;
             });
 
-            _threadsWaitingCount--;
+            s_threadsWaitingCount--;
 
-            if (_terminate) {
+            if (s_terminate) {
                 return;
             }
 
-            task = _jobs.front();
-            _jobs.pop();
+            task = s_jobs.front();
+            s_jobs.pop();
         }
 
         task();

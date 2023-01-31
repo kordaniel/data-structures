@@ -2,6 +2,7 @@
 #include "gmock/gmock.h"
 
 #include <algorithm>
+#include <functional>
 #include <iostream>
 #include <map>
 #include <optional>
@@ -14,6 +15,7 @@
 #include "Io.hpp"
 #include "Math.hpp"
 #include <Matrix.hpp>
+#include "ThreadPool.hpp"
 
 
 template<typename T>
@@ -50,7 +52,10 @@ protected:
     inline static std::vector<std::array<Matrix<float>, 3>>      RandomMatrices;
 
     //void SetUp() override {} // Is called before each test
-    //static void TearDownTestSuite() {}
+    static void TearDownTestSuite()
+    {
+        ThreadPool::Stop();
+    }
 
     static void SetUpTestSuite()
     { // Is called once for the whole test suite
@@ -486,4 +491,27 @@ TEST_F(MatrixTestPreComputed, RandomRowMajorMatricesMultiplication)
 
         EXPECT_TRUE(A*B == C);
     }
+}
+
+TEST(MatrixThreadsTest, RandomMatrixMultiplication)
+{
+    constexpr size_t minElementsPerThread = Matrix<float>::MIN_OPERATIONS_PER_THREAD;
+    constexpr size_t threadCount = 3;
+    constexpr size_t dimA = minElementsPerThread / 2;
+    constexpr size_t dimB = 2 * threadCount + 1;
+
+    Matrix<float> A = Matrix<float>::Random(
+        dimB, dimA,
+        std::bind<float>(&Random::Fast<float>, -10.0f, 10.0f)
+    );
+    Matrix<float> B = Matrix<float>::Random(
+        dimA, dimB,
+        std::bind<float>(&Random::Fast<float>, -10.0f, 10.0f)
+    );
+    Matrix<float> EXPECTED = A * B;
+
+    ThreadPool::Start(threadCount);
+    Matrix<float> RESULT = A * B;
+    ThreadPool::Stop();
+    EXPECT_TRUE(RESULT == EXPECTED);
 }

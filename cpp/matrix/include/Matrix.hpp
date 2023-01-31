@@ -1,8 +1,6 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
-#include "ThreadPool.hpp"
-
 #include <array>
 #include <functional>
 #include <initializer_list>
@@ -15,6 +13,17 @@ template<class T>
 class Matrix
 {
 public:
+
+    // The minimum number of assignments that should be distributed to
+    // any given thread.
+    inline constexpr static size_t MIN_OPERATIONS_PER_THREAD =
+    // Use a smaller constant in debug builds with tests, so that we can
+    // test multithreaded operations on smaller matrices to speed up the tests.
+#ifndef DEBUG_BUILD_WITH_TESTS
+    10'000'000;
+#else
+    1'000'000;
+#endif
 
     enum class Ordering {
         // |1, 2, 3|
@@ -62,22 +71,6 @@ public:
         size_t rows,
         size_t columns,
         std::function<T()> generatorFunc,
-        Matrix::Ordering ordering = Matrix::Ordering::RowMajor
-    );
-
-    /// @brief Returns a matrix with where each element is set to the value returned by the provided generator.
-    ///        Initializes the matrix values in concurrent fashion utilizing the threads provided by thread pool.
-    /// @param rows Height of the matrix.
-    /// @param columns Width of the matrix.
-    /// @param generatorFunc A generator function that is called for every element in the matrix.
-    /// @param threadPoolPtr A threadpool object holding worker threads.
-    /// @param ordering How the matrix should be saved in memory. Defaults to RowMajor ordering.
-    /// @return The generated matrix.
-    static Matrix Random(
-        size_t rows,
-        size_t columns,
-        std::function<T()> generatorFunc,
-        const ThreadPool& threadPoolPtr,
         Matrix::Ordering ordering = Matrix::Ordering::RowMajor
     );
 
