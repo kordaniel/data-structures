@@ -58,5 +58,23 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
     std::cout << "R2, double vals in [10.0, 10.5]:\n" << R2 << std::endl;
     std::cout << "R3, int vals in [0,1]:\n" << R3 << std::endl;
     std::cout << "R3_(5,2): " << R3[5][2] << std::endl;
+
+/*
+    {
+        // Example using threads to generate large random matrices in parallel
+        #include "ThreadPool.hpp"
+
+        ThreadPool tp(6); // use 6 worked threads
+        std::cout << "Initialized Threads, count = " << tp.GetThreadsCount() << std::endl;
+        Matrix<double> MAT = Matrix<double>::Random(
+            1'000'000, 1000,
+            std::bind<double>(&Random::UniformlyDistributed<double>, -10.0, 10.0),
+            tp
+        );
+        std::cout << "Large random matrix generated!" << std::endl;
+    }
+*/
+
     return 0;
+
 }

@@ -306,7 +306,7 @@ TEST(MatrixTest, ColumnMajorPlusRowMajorAddition)
     }, Matrix<int>::Ordering::RowMajor);
     Matrix<int> RESULT = COL_MAJOR + ROW_MAJOR;
     EXPECT_TRUE(RESULT == EXPECTED);
-    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::ColumnMajor);
 }
 
 
@@ -403,7 +403,9 @@ TEST(MatrixTest, RowMajorMinusColumnMajorSubtraction)
         { -8, -10 }
     }, Matrix<int>::Ordering::RowMajor);
     Matrix<int> RESULT = ROW_MAJOR - COL_MAJOR;
-    EXPECT_TRUE(RESULT == EXPECTED);
+    EXPECT_TRUE(RESULT == EXPECTED)
+        << "RESULT:\n" << RESULT
+        << "\nEXPECTED:\n" << EXPECTED << std::endl;
     EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
 }
 
@@ -423,7 +425,7 @@ TEST(MatrixTest, ColumnMajorMinusRowMajorSubtraction)
     }, Matrix<int>::Ordering::RowMajor);
     Matrix<int> RESULT = COL_MAJOR - ROW_MAJOR;
     EXPECT_TRUE(RESULT == EXPECTED);
-    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::RowMajor);
+    EXPECT_TRUE(RESULT.GetOrdering() == Matrix<int>::Ordering::ColumnMajor);
 }
 
 

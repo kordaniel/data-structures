@@ -1,10 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 
 set(sources
-  "Math.cpp"
-  "Main.cpp"
-  "Matrix.cpp"
-  "Io.cpp"
+    "Io.cpp"
+    "Main.cpp"
+    "Math.cpp"
+    "Matrix.cpp"
+    "ThreadPool.cpp"
 )
 
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -14,6 +15,8 @@ else()
 endif()
 
 add_executable("${EXECNAME}" "${sources}")
+target_link_libraries("${EXECNAME}" Threads::Threads)
+
 target_include_directories("${EXECNAME}" PRIVATE "${CMAKE_SOURCE_DIR}/include")
 
 target_compile_options("${EXECNAME}" PRIVATE "${CXX_FLAGS}"

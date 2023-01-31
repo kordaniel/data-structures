@@ -38,7 +38,7 @@ Random::UniformlyDistributed(T minInclusive, T maxInclusive)
 {
     assert(minInclusive < maxInclusive); // if ==, then undefined behaviour for real types!
     static std::random_device os_seed;
-    static std::mt19937 generator(os_seed());
+    static thread_local std::mt19937 generator(os_seed());
 
     if constexpr (std::is_same<T, float>() || std::is_same<T, double>())
     {
@@ -64,7 +64,7 @@ Random::Fast(T minInclusive, T maxInclusive)
 {
     assert(minInclusive <= maxInclusive);
     static std::random_device os_seed;
-    static std::minstd_rand generator(os_seed());
+    static thread_local std::minstd_rand generator(os_seed());
 
     if constexpr (std::is_same<T, float>() || std::is_same<T, double>())
     {

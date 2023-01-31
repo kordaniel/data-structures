@@ -12,10 +12,10 @@ link_libraries(gtest gmock gtest_main)
 set(TestMatrix "TestMatrix")
 set(TestMatrixSources
     "MatrixTest.cpp"
-    "TestHelpers.cpp"
     "${CMAKE_SOURCE_DIR}/src/Io.cpp"
     "${CMAKE_SOURCE_DIR}/src/Math.cpp"
     "${CMAKE_SOURCE_DIR}/src/Matrix.cpp"
+    "${CMAKE_SOURCE_DIR}/src/ThreadPool.cpp"
 )
 add_executable("${TestMatrix}" "${TestMatrixSources}")
 add_test(
