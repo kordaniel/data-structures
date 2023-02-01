@@ -7,17 +7,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8942 ms.
-Generated C in: 10 ms.
-Computed BC in: 1476 ms.
-Generated A in: 8861 ms.
-Computed A*BC in: 1352 ms.
+Generated B in: 7517 ms.
+Generated C in: 8 ms.
+Computed BC in: 1273 ms.
+Generated A in: 7447 ms.
+Computed A*BC in: 1273 ms.
 ---------------------------------------
-In total: 20641 ms.
+In total: 17518 ms.
 
-real	0m21.224s
-user	0m16.467s
-sys	0m4.688s
+real	0m17.805s
+user	0m15.818s
+sys	0m1.955s
 r: 1
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -27,17 +27,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 6117 ms.
-Generated C in: 9 ms.
-Computed BC in: 745 ms.
-Generated A in: 5406 ms.
-Computed A*BC in: 699 ms.
+Generated B in: 4296 ms.
+Generated C in: 12 ms.
+Computed BC in: 629 ms.
+Generated A in: 4270 ms.
+Computed A*BC in: 662 ms.
 ---------------------------------------
-In total: 12976 ms.
+In total: 9869 ms.
 
-real	0m13.552s
-user	0m16.679s
-sys	0m3.992s
+real	0m10.170s
+user	0m15.884s
+sys	0m1.921s
 r: 1
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -47,17 +47,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4333 ms.
-Generated C in: 10 ms.
-Computed BC in: 606 ms.
-Generated A in: 4626 ms.
-Computed A*BC in: 503 ms.
+Generated B in: 3180 ms.
+Generated C in: 7 ms.
+Computed BC in: 422 ms.
+Generated A in: 3163 ms.
+Computed A*BC in: 434 ms.
 ---------------------------------------
-In total: 10078 ms.
+In total: 7206 ms.
 
-real	0m10.675s
-user	0m17.249s
-sys	0m4.226s
+real	0m7.501s
+user	0m15.733s
+sys	0m1.974s
 r: 1
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -67,17 +67,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4061 ms.
-Generated C in: 8 ms.
-Computed BC in: 368 ms.
-Generated A in: 3817 ms.
-Computed A*BC in: 426 ms.
+Generated B in: 2621 ms.
+Generated C in: 7 ms.
+Computed BC in: 352 ms.
+Generated A in: 2634 ms.
+Computed A*BC in: 341 ms.
 ---------------------------------------
-In total: 8680 ms.
+In total: 5955 ms.
 
-real	0m9.268s
-user	0m16.709s
-sys	0m4.407s
+real	0m6.241s
+user	0m15.794s
+sys	0m1.895s
 r: 2
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -87,17 +87,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8620 ms.
-Generated C in: 10 ms.
-Computed BC in: 1379 ms.
-Generated A in: 8611 ms.
-Computed A*BC in: 1340 ms.
+Generated B in: 7429 ms.
+Generated C in: 12 ms.
+Computed BC in: 1260 ms.
+Generated A in: 7442 ms.
+Computed A*BC in: 1302 ms.
 ---------------------------------------
-In total: 19960 ms.
+In total: 17445 ms.
 
-real	0m20.540s
-user	0m16.412s
-sys	0m4.079s
+real	0m17.745s
+user	0m15.788s
+sys	0m1.922s
 r: 2
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -107,17 +107,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5369 ms.
-Generated C in: 10 ms.
-Computed BC in: 672 ms.
-Generated A in: 5355 ms.
-Computed A*BC in: 671 ms.
+Generated B in: 4236 ms.
+Generated C in: 7 ms.
+Computed BC in: 625 ms.
+Generated A in: 4237 ms.
+Computed A*BC in: 651 ms.
 ---------------------------------------
-In total: 12077 ms.
+In total: 9756 ms.
 
-real	0m12.653s
-user	0m16.406s
-sys	0m3.988s
+real	0m10.047s
+user	0m15.754s
+sys	0m1.938s
 r: 2
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -127,17 +127,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4306 ms.
-Generated C in: 8 ms.
-Computed BC in: 480 ms.
-Generated A in: 4318 ms.
-Computed A*BC in: 452 ms.
+Generated B in: 3173 ms.
+Generated C in: 7 ms.
+Computed BC in: 424 ms.
+Generated A in: 3174 ms.
+Computed A*BC in: 438 ms.
 ---------------------------------------
-In total: 9564 ms.
+In total: 7216 ms.
 
-real	0m10.138s
-user	0m16.550s
-sys	0m3.955s
+real	0m7.504s
+user	0m15.878s
+sys	0m1.872s
 r: 2
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -147,17 +147,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3732 ms.
-Generated C in: 8 ms.
-Computed BC in: 370 ms.
-Generated A in: 3742 ms.
-Computed A*BC in: 348 ms.
+Generated B in: 2629 ms.
+Generated C in: 7 ms.
+Computed BC in: 334 ms.
+Generated A in: 2632 ms.
+Computed A*BC in: 331 ms.
 ---------------------------------------
-In total: 8200 ms.
+In total: 5933 ms.
 
-real	0m8.773s
-user	0m16.446s
-sys	0m4.039s
+real	0m6.220s
+user	0m15.831s
+sys	0m1.888s
 r: 3
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -167,17 +167,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8894 ms.
-Generated C in: 9 ms.
-Computed BC in: 1352 ms.
-Generated A in: 8555 ms.
-Computed A*BC in: 1312 ms.
+Generated B in: 7471 ms.
+Generated C in: 7 ms.
+Computed BC in: 1270 ms.
+Generated A in: 7441 ms.
+Computed A*BC in: 1280 ms.
 ---------------------------------------
-In total: 20122 ms.
+In total: 17469 ms.
 
-real	0m20.703s
-user	0m16.423s
-sys	0m4.220s
+real	0m17.765s
+user	0m15.851s
+sys	0m1.879s
 r: 3
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -187,17 +187,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5330 ms.
-Generated C in: 8 ms.
-Computed BC in: 670 ms.
-Generated A in: 5344 ms.
-Computed A*BC in: 677 ms.
+Generated B in: 4231 ms.
+Generated C in: 7 ms.
+Computed BC in: 646 ms.
+Generated A in: 4226 ms.
+Computed A*BC in: 649 ms.
 ---------------------------------------
-In total: 12029 ms.
+In total: 9759 ms.
 
-real	0m12.602s
-user	0m16.291s
-sys	0m4.052s
+real	0m10.047s
+user	0m15.793s
+sys	0m1.930s
 r: 3
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -207,17 +207,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4259 ms.
-Generated C in: 8 ms.
-Computed BC in: 452 ms.
-Generated A in: 4258 ms.
-Computed A*BC in: 470 ms.
+Generated B in: 3164 ms.
+Generated C in: 7 ms.
+Computed BC in: 422 ms.
+Generated A in: 3149 ms.
+Computed A*BC in: 433 ms.
 ---------------------------------------
-In total: 9447 ms.
+In total: 7175 ms.
 
-real	0m10.026s
-user	0m16.525s
-sys	0m3.883s
+real	0m7.462s
+user	0m15.761s
+sys	0m1.910s
 r: 3
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -227,17 +227,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3783 ms.
-Generated C in: 13 ms.
-Computed BC in: 363 ms.
-Generated A in: 3747 ms.
-Computed A*BC in: 355 ms.
+Generated B in: 2656 ms.
+Generated C in: 7 ms.
+Computed BC in: 325 ms.
+Generated A in: 2633 ms.
+Computed A*BC in: 333 ms.
 ---------------------------------------
-In total: 8261 ms.
+In total: 5954 ms.
 
-real	0m8.837s
-user	0m16.634s
-sys	0m3.957s
+real	0m6.242s
+user	0m15.850s
+sys	0m1.904s
 r: 4
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -247,17 +247,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8594 ms.
-Generated C in: 13 ms.
-Computed BC in: 1570 ms.
-Generated A in: 8999 ms.
-Computed A*BC in: 1431 ms.
+Generated B in: 7444 ms.
+Generated C in: 7 ms.
+Computed BC in: 1263 ms.
+Generated A in: 7446 ms.
+Computed A*BC in: 1305 ms.
 ---------------------------------------
-In total: 20607 ms.
+In total: 17465 ms.
 
-real	0m21.220s
-user	0m16.855s
-sys	0m4.306s
+real	0m17.763s
+user	0m15.777s
+sys	0m1.946s
 r: 4
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -267,17 +267,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5710 ms.
-Generated C in: 13 ms.
-Computed BC in: 859 ms.
-Generated A in: 5663 ms.
-Computed A*BC in: 675 ms.
+Generated B in: 4246 ms.
+Generated C in: 7 ms.
+Computed BC in: 668 ms.
+Generated A in: 4864 ms.
+Computed A*BC in: 651 ms.
 ---------------------------------------
-In total: 12920 ms.
+In total: 10436 ms.
 
-real	0m13.520s
-user	0m16.849s
-sys	0m4.540s
+real	0m10.745s
+user	0m15.767s
+sys	0m1.997s
 r: 4
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -287,17 +287,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4315 ms.
-Generated C in: 10 ms.
-Computed BC in: 477 ms.
-Generated A in: 4302 ms.
-Computed A*BC in: 453 ms.
+Generated B in: 3174 ms.
+Generated C in: 7 ms.
+Computed BC in: 429 ms.
+Generated A in: 3186 ms.
+Computed A*BC in: 435 ms.
 ---------------------------------------
-In total: 9557 ms.
+In total: 7231 ms.
 
-real	0m10.132s
-user	0m16.429s
-sys	0m4.074s
+real	0m7.535s
+user	0m15.789s
+sys	0m1.945s
 r: 4
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -307,17 +307,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3759 ms.
-Generated C in: 8 ms.
-Computed BC in: 350 ms.
-Generated A in: 3809 ms.
-Computed A*BC in: 345 ms.
+Generated B in: 2629 ms.
+Generated C in: 7 ms.
+Computed BC in: 314 ms.
+Generated A in: 2645 ms.
+Computed A*BC in: 333 ms.
 ---------------------------------------
-In total: 8271 ms.
+In total: 5928 ms.
 
-real	0m8.843s
-user	0m16.550s
-sys	0m4.006s
+real	0m6.219s
+user	0m15.857s
+sys	0m1.894s
 r: 5
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -327,17 +327,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8676 ms.
-Generated C in: 37 ms.
-Computed BC in: 1542 ms.
-Generated A in: 8973 ms.
-Computed A*BC in: 1448 ms.
+Generated B in: 7419 ms.
+Generated C in: 11 ms.
+Computed BC in: 1264 ms.
+Generated A in: 7419 ms.
+Computed A*BC in: 1297 ms.
 ---------------------------------------
-In total: 20676 ms.
+In total: 17410 ms.
 
-real	0m21.274s
-user	0m16.882s
-sys	0m4.325s
+real	0m17.707s
+user	0m15.752s
+sys	0m1.943s
 r: 5
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -347,17 +347,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5733 ms.
-Generated C in: 9 ms.
-Computed BC in: 797 ms.
-Generated A in: 5678 ms.
-Computed A*BC in: 734 ms.
+Generated B in: 4208 ms.
+Generated C in: 11 ms.
+Computed BC in: 636 ms.
+Generated A in: 4234 ms.
+Computed A*BC in: 657 ms.
 ---------------------------------------
-In total: 12951 ms.
+In total: 9746 ms.
 
-real	0m13.546s
-user	0m16.850s
-sys	0m4.668s
+real	0m10.047s
+user	0m15.802s
+sys	0m1.911s
 r: 5
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -367,17 +367,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4585 ms.
-Generated C in: 9 ms.
-Computed BC in: 602 ms.
-Generated A in: 4609 ms.
-Computed A*BC in: 497 ms.
+Generated B in: 3183 ms.
+Generated C in: 15 ms.
+Computed BC in: 436 ms.
+Generated A in: 3170 ms.
+Computed A*BC in: 436 ms.
 ---------------------------------------
-In total: 10302 ms.
+In total: 7240 ms.
 
-real	0m10.908s
-user	0m17.129s
-sys	0m4.624s
+real	0m7.558s
+user	0m15.873s
+sys	0m1.975s
 r: 5
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -387,98 +387,18 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4034 ms.
-Generated C in: 9 ms.
-Computed BC in: 509 ms.
-Generated A in: 4047 ms.
-Computed A*BC in: 428 ms.
----------------------------------------
-In total: 9027 ms.
-
-real	0m9.624s
-user	0m17.557s
-sys	0m4.490s
-r: 6
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 1 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 8801 ms.
-Generated C in: 10 ms.
-Computed BC in: 1353 ms.
-Generated A in: 8601 ms.
-Computed A*BC in: 1353 ms.
----------------------------------------
-In total: 20118 ms.
-
-real	0m20.701s
-user	0m16.378s
-sys	0m4.277s
-r: 6
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 2 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 5343 ms.
-Generated C in: 21 ms.
-Computed BC in: 694 ms.
-Generated A in: 5368 ms.
-Computed A*BC in: 680 ms.
----------------------------------------
-In total: 12106 ms.
-
-real	0m12.688s
-user	0m16.407s
-sys	0m4.017s
-r: 6
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 3 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 4317 ms.
-Generated C in: 10 ms.
-Computed BC in: 462 ms.
-Generated A in: 4297 ms.
-Computed A*BC in: 451 ms.
----------------------------------------
-In total: 9537 ms.
-
-real	0m10.118s
-user	0m16.448s
-sys	0m4.050s
-r: 6
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 4 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 3768 ms.
-Generated C in: 8 ms.
-Computed BC in: 359 ms.
-Generated A in: 3955 ms.
+Generated B in: 2647 ms.
+Generated C in: 11 ms.
+Computed BC in: 334 ms.
+Generated A in: 2659 ms.
 Computed A*BC in: 353 ms.
 ---------------------------------------
-In total: 8443 ms.
+In total: 6004 ms.
 
-real	0m9.018s
-user	0m16.698s
-sys	0m3.934s
-r: 7
+real	0m6.300s
+user	0m15.958s
+sys	0m1.999s
+r: 6
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
 opearations and are reported in milliseconds. Do note that these
@@ -487,137 +407,217 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8596 ms.
-Generated C in: 10 ms.
-Computed BC in: 1389 ms.
-Generated A in: 8617 ms.
-Computed A*BC in: 1429 ms.
----------------------------------------
-In total: 20041 ms.
-
-real	0m20.650s
-user	0m16.598s
-sys	0m4.012s
-r: 7
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 2 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 5492 ms.
-Generated C in: 8 ms.
-Computed BC in: 685 ms.
-Generated A in: 5329 ms.
-Computed A*BC in: 674 ms.
----------------------------------------
-In total: 12188 ms.
-
-real	0m12.765s
-user	0m16.545s
-sys	0m4.030s
-r: 7
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 3 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 4274 ms.
-Generated C in: 8 ms.
-Computed BC in: 475 ms.
-Generated A in: 4258 ms.
-Computed A*BC in: 445 ms.
----------------------------------------
-In total: 9460 ms.
-
-real	0m10.036s
-user	0m16.507s
-sys	0m3.915s
-r: 7
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 4 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 3804 ms.
-Generated C in: 8 ms.
-Computed BC in: 353 ms.
-Generated A in: 3814 ms.
-Computed A*BC in: 363 ms.
----------------------------------------
-In total: 8342 ms.
-
-real	0m8.915s
-user	0m16.696s
-sys	0m3.893s
-r: 8
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 1 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 8540 ms.
-Generated C in: 9 ms.
-Computed BC in: 1338 ms.
-Generated A in: 8568 ms.
-Computed A*BC in: 1354 ms.
----------------------------------------
-In total: 19809 ms.
-
-real	0m20.389s
-user	0m16.317s
-sys	0m4.042s
-r: 8
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 2 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 5353 ms.
-Generated C in: 10 ms.
-Computed BC in: 698 ms.
-Generated A in: 5413 ms.
-Computed A*BC in: 706 ms.
----------------------------------------
-In total: 12180 ms.
-
-real	0m12.767s
-user	0m16.554s
-sys	0m4.025s
-r: 8
-Running timing tests for generation and multiplication of matrices.
-All printed times are real wall clock times of the different
-opearations and are reported in milliseconds. Do note that these
-times might differ from the times reported by different tools, since
-this is a multithreaded application.
-Using: 3 worker threads.
---------------------------------------------------------------------
-
-Generated B in: 4358 ms.
+Generated B in: 7455 ms.
 Generated C in: 13 ms.
-Computed BC in: 457 ms.
-Generated A in: 4334 ms.
-Computed A*BC in: 454 ms.
+Computed BC in: 1271 ms.
+Generated A in: 7472 ms.
+Computed A*BC in: 1292 ms.
 ---------------------------------------
-In total: 9616 ms.
+In total: 17503 ms.
 
-real	0m10.196s
-user	0m16.736s
-sys	0m3.967s
+real	0m17.798s
+user	0m15.878s
+sys	0m1.891s
+r: 6
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 2 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 4244 ms.
+Generated C in: 13 ms.
+Computed BC in: 628 ms.
+Generated A in: 4213 ms.
+Computed A*BC in: 647 ms.
+---------------------------------------
+In total: 9745 ms.
+
+real	0m10.044s
+user	0m15.812s
+sys	0m1.871s
+r: 6
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 3 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 3165 ms.
+Generated C in: 7 ms.
+Computed BC in: 438 ms.
+Generated A in: 3174 ms.
+Computed A*BC in: 436 ms.
+---------------------------------------
+In total: 7220 ms.
+
+real	0m7.515s
+user	0m15.843s
+sys	0m1.911s
+r: 6
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 4 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 2622 ms.
+Generated C in: 7 ms.
+Computed BC in: 321 ms.
+Generated A in: 2615 ms.
+Computed A*BC in: 350 ms.
+---------------------------------------
+In total: 5915 ms.
+
+real	0m6.205s
+user	0m15.850s
+sys	0m1.870s
+r: 7
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 1 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 7448 ms.
+Generated C in: 7 ms.
+Computed BC in: 1246 ms.
+Generated A in: 7750 ms.
+Computed A*BC in: 1391 ms.
+---------------------------------------
+In total: 17842 ms.
+
+real	0m18.143s
+user	0m15.992s
+sys	0m2.093s
+r: 7
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 2 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 4570 ms.
+Generated C in: 12 ms.
+Computed BC in: 670 ms.
+Generated A in: 4524 ms.
+Computed A*BC in: 685 ms.
+---------------------------------------
+In total: 10461 ms.
+
+real	0m10.784s
+user	0m16.138s
+sys	0m2.406s
+r: 7
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 3 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 3376 ms.
+Generated C in: 14 ms.
+Computed BC in: 452 ms.
+Generated A in: 3383 ms.
+Computed A*BC in: 474 ms.
+---------------------------------------
+In total: 7699 ms.
+
+real	0m8.001s
+user	0m15.923s
+sys	0m2.406s
+r: 7
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 4 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 2905 ms.
+Generated C in: 7 ms.
+Computed BC in: 450 ms.
+Generated A in: 2845 ms.
+Computed A*BC in: 349 ms.
+---------------------------------------
+In total: 6556 ms.
+
+real	0m6.855s
+user	0m15.888s
+sys	0m2.396s
+r: 8
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 1 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 7660 ms.
+Generated C in: 7 ms.
+Computed BC in: 1316 ms.
+Generated A in: 7644 ms.
+Computed A*BC in: 1286 ms.
+---------------------------------------
+In total: 17913 ms.
+
+real	0m18.214s
+user	0m15.863s
+sys	0m2.315s
+r: 8
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 2 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 4326 ms.
+Generated C in: 10 ms.
+Computed BC in: 644 ms.
+Generated A in: 4256 ms.
+Computed A*BC in: 661 ms.
+---------------------------------------
+In total: 9897 ms.
+
+real	0m10.189s
+user	0m15.904s
+sys	0m1.963s
+r: 8
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 3 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 3196 ms.
+Generated C in: 15 ms.
+Computed BC in: 426 ms.
+Generated A in: 3172 ms.
+Computed A*BC in: 439 ms.
+---------------------------------------
+In total: 7248 ms.
+
+real	0m7.548s
+user	0m15.724s
+sys	0m2.018s
 r: 8
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -627,17 +627,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3801 ms.
-Generated C in: 14 ms.
-Computed BC in: 359 ms.
-Generated A in: 3735 ms.
-Computed A*BC in: 343 ms.
+Generated B in: 2662 ms.
+Generated C in: 7 ms.
+Computed BC in: 331 ms.
+Generated A in: 2667 ms.
+Computed A*BC in: 340 ms.
 ---------------------------------------
-In total: 8252 ms.
+In total: 6007 ms.
 
-real	0m8.825s
-user	0m16.706s
-sys	0m4.027s
+real	0m6.306s
+user	0m15.909s
+sys	0m1.975s
 r: 9
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -647,17 +647,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8539 ms.
-Generated C in: 16 ms.
-Computed BC in: 1483 ms.
-Generated A in: 8926 ms.
-Computed A*BC in: 1404 ms.
+Generated B in: 7451 ms.
+Generated C in: 7 ms.
+Computed BC in: 1255 ms.
+Generated A in: 7485 ms.
+Computed A*BC in: 1367 ms.
 ---------------------------------------
-In total: 20368 ms.
+In total: 17565 ms.
 
-real	0m20.955s
-user	0m16.593s
-sys	0m4.337s
+real	0m17.864s
+user	0m15.842s
+sys	0m1.974s
 r: 9
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -667,17 +667,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5494 ms.
-Generated C in: 14 ms.
-Computed BC in: 749 ms.
-Generated A in: 5532 ms.
-Computed A*BC in: 690 ms.
+Generated B in: 4441 ms.
+Generated C in: 7 ms.
+Computed BC in: 650 ms.
+Generated A in: 4470 ms.
+Computed A*BC in: 682 ms.
 ---------------------------------------
-In total: 12479 ms.
+In total: 10250 ms.
 
-real	0m13.071s
-user	0m17.040s
-sys	0m3.929s
+real	0m10.554s
+user	0m15.882s
+sys	0m2.347s
 r: 9
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -687,17 +687,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4291 ms.
+Generated B in: 3355 ms.
 Generated C in: 8 ms.
-Computed BC in: 455 ms.
-Generated A in: 4246 ms.
-Computed A*BC in: 451 ms.
+Computed BC in: 451 ms.
+Generated A in: 3461 ms.
+Computed A*BC in: 492 ms.
 ---------------------------------------
-In total: 9451 ms.
+In total: 7767 ms.
 
-real	0m10.025s
-user	0m16.402s
-sys	0m3.970s
+real	0m8.066s
+user	0m16.221s
+sys	0m2.259s
 r: 9
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -707,17 +707,17 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3745 ms.
-Generated C in: 8 ms.
-Computed BC in: 363 ms.
-Generated A in: 3798 ms.
-Computed A*BC in: 384 ms.
+Generated B in: 3006 ms.
+Generated C in: 12 ms.
+Computed BC in: 333 ms.
+Generated A in: 2833 ms.
+Computed A*BC in: 396 ms.
 ---------------------------------------
-In total: 8298 ms.
+In total: 6580 ms.
 
-real	0m8.871s
-user	0m16.664s
-sys	0m3.953s
+real	0m6.880s
+user	0m16.230s
+sys	0m2.342s
 r: 10
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -727,17 +727,17 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8519 ms.
-Generated C in: 10 ms.
+Generated B in: 7507 ms.
+Generated C in: 7 ms.
 Computed BC in: 1320 ms.
-Generated A in: 8542 ms.
-Computed A*BC in: 1324 ms.
+Generated A in: 7631 ms.
+Computed A*BC in: 1305 ms.
 ---------------------------------------
-In total: 19715 ms.
+In total: 17770 ms.
 
-real	0m20.291s
-user	0m16.249s
-sys	0m4.020s
+real	0m18.071s
+user	0m15.915s
+sys	0m2.124s
 r: 10
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -747,17 +747,17 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5366 ms.
-Generated C in: 15 ms.
-Computed BC in: 801 ms.
-Generated A in: 5504 ms.
-Computed A*BC in: 718 ms.
+Generated B in: 4284 ms.
+Generated C in: 16 ms.
+Computed BC in: 654 ms.
+Generated A in: 4407 ms.
+Computed A*BC in: 679 ms.
 ---------------------------------------
-In total: 12404 ms.
+In total: 10040 ms.
 
-real	0m12.991s
-user	0m17.096s
-sys	0m3.907s
+real	0m10.345s
+user	0m15.888s
+sys	0m2.131s
 r: 10
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -767,17 +767,17 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4252 ms.
-Generated C in: 9 ms.
-Computed BC in: 447 ms.
-Generated A in: 4279 ms.
-Computed A*BC in: 449 ms.
+Generated B in: 3346 ms.
+Generated C in: 7 ms.
+Computed BC in: 434 ms.
+Generated A in: 3345 ms.
+Computed A*BC in: 458 ms.
 ---------------------------------------
-In total: 9436 ms.
+In total: 7590 ms.
 
-real	0m10.023s
-user	0m16.476s
-sys	0m3.893s
+real	0m7.894s
+user	0m15.946s
+sys	0m2.218s
 r: 10
 Running timing tests for generation and multiplication of matrices.
 All printed times are real wall clock times of the different
@@ -787,14 +787,14 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3731 ms.
-Generated C in: 8 ms.
-Computed BC in: 348 ms.
-Generated A in: 3745 ms.
-Computed A*BC in: 348 ms.
+Generated B in: 2808 ms.
+Generated C in: 7 ms.
+Computed BC in: 334 ms.
+Generated A in: 2818 ms.
+Computed A*BC in: 397 ms.
 ---------------------------------------
-In total: 8180 ms.
+In total: 6364 ms.
 
-real	0m8.753s
-user	0m16.542s
-sys	0m3.919s
+real	0m6.670s
+user	0m15.954s
+sys	0m2.250s
