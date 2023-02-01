@@ -6,30 +6,30 @@ this is a multithreaded application.
 Using: 1 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 8711 ms.
-Generated C in: 11 ms.
-Computed BC in: 1311 ms.
-Generated A in: 8486 ms.
-Computed A*BC in: 1305 ms.
+Generated B in: 7521 ms.
+Generated C in: 10 ms.
+Computed BC in: 1274 ms.
+Generated A in: 7415 ms.
+Computed A*BC in: 1262 ms.
 ---------------------------------------
-In total: 19824 ms.
+In total: 17482 ms.
 	Command being timed: "./bin/Matrixer 1"
-	User time (seconds): 16.40
-	System time (seconds): 3.94
+	User time (seconds): 15.74
+	System time (seconds): 2.00
 	Percent of CPU this job got: 99%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:20.40
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:17.78
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7823800
+	Maximum resident set size (kbytes): 3913696
 	Average resident set size (kbytes): 0
-	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3910312
-	Voluntary context switches: 15
-	Involuntary context switches: 773
+	Major (requiring I/O) page faults: 2
+	Minor (reclaiming a frame) page faults: 1955231
+	Voluntary context switches: 16
+	Involuntary context switches: 610
 	Swaps: 0
-	File system inputs: 0
+	File system inputs: 168
 	File system outputs: 24
 	Socket messages sent: 0
 	Socket messages received: 0
@@ -44,28 +44,28 @@ this is a multithreaded application.
 Using: 2 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 5260 ms.
-Generated C in: 8 ms.
-Computed BC in: 664 ms.
-Generated A in: 5303 ms.
-Computed A*BC in: 692 ms.
+Generated B in: 4213 ms.
+Generated C in: 13 ms.
+Computed BC in: 644 ms.
+Generated A in: 4199 ms.
+Computed A*BC in: 651 ms.
 ---------------------------------------
-In total: 11927 ms.
+In total: 9720 ms.
 	Command being timed: "./bin/Matrixer 2"
-	User time (seconds): 16.51
-	System time (seconds): 3.71
-	Percent of CPU this job got: 161%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.50
+	User time (seconds): 15.71
+	System time (seconds): 1.92
+	Percent of CPU this job got: 176%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:10.00
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7823720
+	Maximum resident set size (kbytes): 3913684
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3910316
-	Voluntary context switches: 23
-	Involuntary context switches: 1130
+	Minor (reclaiming a frame) page faults: 1955238
+	Voluntary context switches: 22
+	Involuntary context switches: 723
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 24
@@ -82,31 +82,31 @@ this is a multithreaded application.
 Using: 3 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 4221 ms.
-Generated C in: 8 ms.
-Computed BC in: 452 ms.
-Generated A in: 4179 ms.
-Computed A*BC in: 442 ms.
+Generated B in: 3162 ms.
+Generated C in: 7 ms.
+Computed BC in: 423 ms.
+Generated A in: 3134 ms.
+Computed A*BC in: 431 ms.
 ---------------------------------------
-In total: 9302 ms.
+In total: 7157 ms.
 	Command being timed: "./bin/Matrixer 3"
-	User time (seconds): 16.31
-	System time (seconds): 3.82
-	Percent of CPU this job got: 203%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.88
+	User time (seconds): 15.70
+	System time (seconds): 1.91
+	Percent of CPU this job got: 236%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:07.44
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7823760
+	Maximum resident set size (kbytes): 3913696
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3910319
-	Voluntary context switches: 27
-	Involuntary context switches: 878
+	Minor (reclaiming a frame) page faults: 1955241
+	Voluntary context switches: 28
+	Involuntary context switches: 639
 	Swaps: 0
 	File system inputs: 0
-	File system outputs: 24
+	File system outputs: 16
 	Socket messages sent: 0
 	Socket messages received: 0
 	Signals delivered: 0
@@ -120,28 +120,28 @@ this is a multithreaded application.
 Using: 4 worker threads.
 --------------------------------------------------------------------
 
-Generated B in: 3650 ms.
-Generated C in: 8 ms.
-Computed BC in: 334 ms.
-Generated A in: 3661 ms.
-Computed A*BC in: 339 ms.
+Generated B in: 2642 ms.
+Generated C in: 7 ms.
+Computed BC in: 481 ms.
+Generated A in: 2622 ms.
+Computed A*BC in: 333 ms.
 ---------------------------------------
-In total: 7992 ms.
+In total: 6085 ms.
 	Command being timed: "./bin/Matrixer 4"
-	User time (seconds): 16.36
-	System time (seconds): 3.81
-	Percent of CPU this job got: 235%
-	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.56
+	User time (seconds): 15.84
+	System time (seconds): 1.89
+	Percent of CPU this job got: 278%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.36
 	Average shared text size (kbytes): 0
 	Average unshared data size (kbytes): 0
 	Average stack size (kbytes): 0
 	Average total size (kbytes): 0
-	Maximum resident set size (kbytes): 7823784
+	Maximum resident set size (kbytes): 3913696
 	Average resident set size (kbytes): 0
 	Major (requiring I/O) page faults: 0
-	Minor (reclaiming a frame) page faults: 3910323
-	Voluntary context switches: 35
-	Involuntary context switches: 627
+	Minor (reclaiming a frame) page faults: 1955246
+	Voluntary context switches: 38
+	Involuntary context switches: 865
 	Swaps: 0
 	File system inputs: 0
 	File system outputs: 24

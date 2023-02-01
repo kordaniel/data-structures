@@ -12,7 +12,7 @@
 
 #ifdef DO_TESTS
     #include <cstdlib>
-    #define TEST_DT double
+    #define TEST_DT float
     // Specify the datatype to use in the tests
     // from the set of: float, double and int.
 #endif
