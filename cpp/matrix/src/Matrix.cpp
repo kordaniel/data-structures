@@ -214,6 +214,12 @@ Matrix<T>::GetHeight() const { return _rows; }
 template<class T> typename Matrix<T>::Ordering
 Matrix<T>::GetOrdering() const { return _ordering; }
 
+template<class T> const T*
+Matrix<T>::GetRawData() const
+{
+    return _data.get();
+}
+
 template<class T> typename Matrix<T>::Reference
 Matrix<T>::operator[](size_t row) {
     if (row >= GetHeight()) {

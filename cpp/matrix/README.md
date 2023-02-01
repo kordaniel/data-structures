@@ -1,6 +1,16 @@
 # P1-matrix-multiplication
 Provides operations for (2D) matrices.
 
+## Libraries
+[matplotlib-cpp](https://github.com/lava/matplotlib-cpp) - Used to plot the generated data.
+
+## Perf tests & Plotting data
+[matplotlib-cpp](https://github.com/lava/matplotlib-cpp) requires some additional python and numpy packages to be installed before compiling. In case the building fails, check out the README of the library for details about these.
+
+Define or comment out the various directives specified in Main.cpp to choose between running the performance tests, plotting the data or normal execution.
+
+When running the performance tests you can pass one argument that sets the amount of worker threads to use.
+
 ## Requirements
 - cmake 3.16+
 - C++17 compiler and build tools
@@ -11,6 +21,7 @@ Default build target is set to Release.
 foo@bar:$ cmake -S. -B build/release
 foo@bar:$ cmake --build build/release [-- VERBOSE=1]
 foo@bar:$ ./bin/Matrixer
+foo@bar:$ ./bin/Matrixer 2 # Set worker threads count to 2 (only when perf testing)
 
 foo@bar:$ cmake -DCMAKE_BUILD_TYPE=Debug -S. -B build/debug
 foo@bar:$ cmake --build build/debug [-- VERBOSE=1]

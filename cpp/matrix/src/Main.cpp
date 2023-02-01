@@ -8,11 +8,16 @@
 #include <iostream>
 #include <memory>
 
+
 #define DO_TESTS 1
 
 #ifdef DO_TESTS
+    #define PERF_TEST 1 // run perf tests, undefine to do plotting
     #include <cstdlib>
-    #define TEST_DT double
+    #include <map>
+    #include <string>
+    #include "matplotlibcpp.h"
+    #define TEST_DT float
     // Specify the datatype to use in the tests
     // from the set of: float, double and int.
 #endif
@@ -36,6 +41,49 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
 
 #ifdef DO_TESTS
 
+    #ifndef PERF_TEST
+    namespace plt = matplotlibcpp;
+
+    size_t width = 1000, height = 1'000;
+/*
+    Matrix<TEST_DT> randFast = Matrix<TEST_DT>::Random(
+        height, width,
+        std::bind<TEST_DT>(&Random::Fast<TEST_DT>, static_cast<TEST_DT>(0.0), static_cast<TEST_DT>(1.0))
+    );
+*/
+    Matrix<TEST_DT> randUniform = Matrix<TEST_DT>::Random(
+        height, width,
+        std::bind<TEST_DT>(&Random::UniformlyDistributed<TEST_DT>, static_cast<TEST_DT>(0.0), static_cast<TEST_DT>(1.0))
+    );
+
+    //std::vector<TEST_DT> randfast(randFast.GetRawData(), randFast.GetRawData() + (width*height));
+    //std::vector<TEST_DT> randuni(randUniform.GetRawData(), randUniform.GetRawData() + (width*height));
+    //std::vector<TEST_DT> randc(CRand.GetRawData(), CRand.GetRawData() + (width*height));
+
+    plt::figure_size(1280, 720);
+    plt::title("Uniform dist. (X-axis scaled)");
+
+    // Histograms, "eCDF" with last arg set to true (cumulates)
+    //plt::hist(randfast, 100, "r", 1.0, true);
+    //plt::hist(randuni,  100, "b", 1.0, true);
+    //plt::hist(randc,    30, "b", 1.0, true);
+
+
+    std::map<std::string, std::string> kwargs = { {"aspect", "auto"} }; // empty obj. works: { }
+    const int colors = 1;
+
+
+    PyObject* mat;
+    plt::imshow(randUniform.GetRawData(), randUniform.GetHeight(), randUniform.GetWidth(), colors, kwargs, &mat);
+    plt::colorbar(mat);
+
+
+    plt::show();
+    //plt::save("forest-uniform-scaled.png");
+    plt::close();
+    Py_DECREF(mat);
+
+    #else
     int64_t elapsed;
     int64_t total = 0;
     Matrix<TEST_DT>* BCptr = nullptr;
@@ -101,7 +149,7 @@ main([[maybe_unused]] int argc, [[maybe_unused]] char* argv[])
               << "In total: " << total << " ms." << std::endl;
 
     #undef TEST_DT
-
+    #endif
 #else
 
     std::cout << "Identity matrices with diagonal sizes in [1,3] and with types in [float,double,int]:" << std::endl;

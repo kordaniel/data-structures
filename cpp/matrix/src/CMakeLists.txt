@@ -16,9 +16,17 @@ else()
 endif()
 
 add_executable("${EXECNAME}" "${sources}")
-target_link_libraries("${EXECNAME}" Threads::Threads)
+target_link_libraries("${EXECNAME}"
+    Threads::Threads
+    Python3::Python
+    Python3::Module
+    Python3::NumPy
+)
 
-target_include_directories("${EXECNAME}" PRIVATE "${CMAKE_SOURCE_DIR}/include")
+target_include_directories("${EXECNAME}"
+    PRIVATE "${CMAKE_SOURCE_DIR}/libs"
+    PRIVATE "${CMAKE_SOURCE_DIR}/include"
+)
 
 target_compile_options("${EXECNAME}" PRIVATE "${CXX_FLAGS}"
     "$<$<CONFIG:Debug>:${CXX_FLAGS_DEBUG}>"

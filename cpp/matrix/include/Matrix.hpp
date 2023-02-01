@@ -121,6 +121,7 @@ public:
     size_t GetWidth()  const;
     size_t GetHeight() const;
     Matrix::Ordering GetOrdering() const;
+    const T* GetRawData() const;
 
     Matrix::Reference operator[](size_t row);
     const Matrix::ConstReference operator[](size_t row) const;
