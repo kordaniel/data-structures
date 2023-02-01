@@ -1,0 +1,152 @@
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 1 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 8711 ms.
+Generated C in: 11 ms.
+Computed BC in: 1311 ms.
+Generated A in: 8486 ms.
+Computed A*BC in: 1305 ms.
+---------------------------------------
+In total: 19824 ms.
+	Command being timed: "./bin/Matrixer 1"
+	User time (seconds): 16.40
+	System time (seconds): 3.94
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:20.40
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7823800
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3910312
+	Voluntary context switches: 15
+	Involuntary context switches: 773
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 2 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 5260 ms.
+Generated C in: 8 ms.
+Computed BC in: 664 ms.
+Generated A in: 5303 ms.
+Computed A*BC in: 692 ms.
+---------------------------------------
+In total: 11927 ms.
+	Command being timed: "./bin/Matrixer 2"
+	User time (seconds): 16.51
+	System time (seconds): 3.71
+	Percent of CPU this job got: 161%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:12.50
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7823720
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3910316
+	Voluntary context switches: 23
+	Involuntary context switches: 1130
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 3 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 4221 ms.
+Generated C in: 8 ms.
+Computed BC in: 452 ms.
+Generated A in: 4179 ms.
+Computed A*BC in: 442 ms.
+---------------------------------------
+In total: 9302 ms.
+	Command being timed: "./bin/Matrixer 3"
+	User time (seconds): 16.31
+	System time (seconds): 3.82
+	Percent of CPU this job got: 203%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:09.88
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7823760
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3910319
+	Voluntary context switches: 27
+	Involuntary context switches: 878
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0
+Running timing tests for generation and multiplication of matrices.
+All printed times are real wall clock times of the different
+opearations and are reported in milliseconds. Do note that these
+times might differ from the times reported by different tools, since
+this is a multithreaded application.
+Using: 4 worker threads.
+--------------------------------------------------------------------
+
+Generated B in: 3650 ms.
+Generated C in: 8 ms.
+Computed BC in: 334 ms.
+Generated A in: 3661 ms.
+Computed A*BC in: 339 ms.
+---------------------------------------
+In total: 7992 ms.
+	Command being timed: "./bin/Matrixer 4"
+	User time (seconds): 16.36
+	System time (seconds): 3.81
+	Percent of CPU this job got: 235%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:08.56
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 7823784
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3910323
+	Voluntary context switches: 35
+	Involuntary context switches: 627
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 24
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

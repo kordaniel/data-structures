@@ -1,0 +1,100 @@
+r: 1
+DONE: Generated matrix B in: 10.847262620925903 seconds.
+DONE: Generated matric C in: 0.01138162612915039 seconds.
+DONE: Computed matrix BC in: 0.12482857704162598 seconds.
+DONE: Generated matrix A in: 10.560917139053345 seconds.
+DONE: Computed matrix A*(BC) in 0.11875343322753906 seconds.
+
+real	0m22.755s
+user	0m18.223s
+sys	0m5.465s
+r: 2
+DONE: Generated matrix B in: 10.890800714492798 seconds.
+DONE: Generated matric C in: 0.01121377944946289 seconds.
+DONE: Computed matrix BC in: 0.0985105037689209 seconds.
+DONE: Generated matrix A in: 10.411758422851562 seconds.
+DONE: Computed matrix A*(BC) in 0.11974167823791504 seconds.
+
+real	0m22.489s
+user	0m18.080s
+sys	0m5.210s
+r: 3
+DONE: Generated matrix B in: 10.387564420700073 seconds.
+DONE: Generated matric C in: 0.011664390563964844 seconds.
+DONE: Computed matrix BC in: 0.12411904335021973 seconds.
+DONE: Generated matrix A in: 10.325918674468994 seconds.
+DONE: Computed matrix A*(BC) in 0.11795401573181152 seconds.
+
+real	0m21.871s
+user	0m18.287s
+sys	0m4.700s
+r: 4
+DONE: Generated matrix B in: 10.311582088470459 seconds.
+DONE: Generated matric C in: 0.011280059814453125 seconds.
+DONE: Computed matrix BC in: 0.12411332130432129 seconds.
+DONE: Generated matrix A in: 10.240145921707153 seconds.
+DONE: Computed matrix A*(BC) in 0.1179800033569336 seconds.
+
+real	0m21.533s
+user	0m18.306s
+sys	0m4.495s
+r: 5
+DONE: Generated matrix B in: 10.403052806854248 seconds.
+DONE: Generated matric C in: 0.011689901351928711 seconds.
+DONE: Computed matrix BC in: 0.12779593467712402 seconds.
+DONE: Generated matrix A in: 10.297590255737305 seconds.
+DONE: Computed matrix A*(BC) in 0.11907553672790527 seconds.
+
+real	0m21.830s
+user	0m18.358s
+sys	0m4.527s
+r: 6
+DONE: Generated matrix B in: 10.350894689559937 seconds.
+DONE: Generated matric C in: 0.011771678924560547 seconds.
+DONE: Computed matrix BC in: 0.1274268627166748 seconds.
+DONE: Generated matrix A in: 10.32640814781189 seconds.
+DONE: Computed matrix A*(BC) in 0.12794041633605957 seconds.
+
+real	0m24.306s
+user	0m18.474s
+sys	0m4.491s
+r: 7
+DONE: Generated matrix B in: 10.589759826660156 seconds.
+DONE: Generated matric C in: 0.011405467987060547 seconds.
+DONE: Computed matrix BC in: 0.1257946491241455 seconds.
+DONE: Generated matrix A in: 10.246072769165039 seconds.
+DONE: Computed matrix A*(BC) in 0.13290882110595703 seconds.
+
+real	0m21.982s
+user	0m18.348s
+sys	0m4.712s
+r: 8
+DONE: Generated matrix B in: 10.101202726364136 seconds.
+DONE: Generated matric C in: 0.011426210403442383 seconds.
+DONE: Computed matrix BC in: 0.125502347946167 seconds.
+DONE: Generated matrix A in: 10.043797016143799 seconds.
+DONE: Computed matrix A*(BC) in 0.12161517143249512 seconds.
+
+real	0m21.430s
+user	0m18.250s
+sys	0m4.203s
+r: 9
+DONE: Generated matrix B in: 10.119804859161377 seconds.
+DONE: Generated matric C in: 0.011601686477661133 seconds.
+DONE: Computed matrix BC in: 0.20046329498291016 seconds.
+DONE: Generated matrix A in: 10.107386112213135 seconds.
+DONE: Computed matrix A*(BC) in 0.11842465400695801 seconds.
+
+real	0m22.654s
+user	0m18.199s
+sys	0m4.216s
+r: 10
+DONE: Generated matrix B in: 11.279293537139893 seconds.
+DONE: Generated matric C in: 0.012956380844116211 seconds.
+DONE: Computed matrix BC in: 0.2130880355834961 seconds.
+DONE: Generated matrix A in: 11.508857011795044 seconds.
+DONE: Computed matrix A*(BC) in 0.21176552772521973 seconds.
+
+real	0m24.198s
+user	0m19.968s
+sys	0m5.832s
